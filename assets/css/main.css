@@ -400,8 +400,8 @@ input, select, textarea {
 		input[type="button"]:hover,
 		button:hover,
 		.button:hover {
-			box-shadow: inset 0 0 0 2px #34a58e;
-			color: #34a58e !important;
+			box-shadow: inset 0 0 0 2px #CC5500;
+			color: #CC5500 !important;
 		}
 
 			input[type="submit"]:hover:active,
@@ -410,7 +410,7 @@ input, select, textarea {
 			button:hover:active,
 			.button:hover:active {
 				background-color: rgba(52, 165, 142, 0.15);
-				color: #34a58e !important;
+				color: #CC5500 !important;
 			}
 
 		input[type="submit"].icon,
@@ -458,7 +458,7 @@ input, select, textarea {
 		input[type="button"].primary,
 		button.primary,
 		.button.primary {
-			background-color: #34a58e;
+			background-color: #CC5500;
 			box-shadow: none;
 		}
 
@@ -616,7 +616,7 @@ input, select, textarea {
 		input[type="url"]:focus,
 		select:focus,
 		textarea:focus {
-			box-shadow: inset 0 0 0 2px #34a58e;
+			box-shadow: inset 0 0 0 2px #CC5500;
 		}
 
 	select {
@@ -714,15 +714,15 @@ input, select, textarea {
 
 		input[type="checkbox"]:checked + label:before,
 		input[type="radio"]:checked + label:before {
-			background: #34a58e;
-			border-color: #34a58e;
+			background: #CC5500;
+			border-color: #CC5500;
 			color: #ffffff;
 			content: '\f00c';
 		}
 
 		input[type="checkbox"]:focus + label:before,
 		input[type="radio"]:focus + label:before {
-			box-shadow: 0 0 0 2px #34a58e;
+			box-shadow: 0 0 0 2px #CC5500;
 		}
 
 	input[type="radio"] + label:before {
