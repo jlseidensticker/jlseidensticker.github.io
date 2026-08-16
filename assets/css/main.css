@@ -1532,7 +1532,8 @@ input, select, textarea {
 						color: #ffffff;
 						display: inline-block;
 						letter-spacing: 0.1em;
-						padding: 0 1.65em;
+						/* padding: 0 1.65em; */
+                        padding: 0 0.2em;
 						text-transform: uppercase;
 					}
 
