@@ -243,55 +243,69 @@ input, select, textarea {
 		margin: 0 0 1em 0;
 		text-transform: uppercase;
 	}
+    
+    h1l, h2l, h3l, h4l, h5l, h6l {
+		color: #CC5500;
+		font-weight: 300;
+		letter-spacing: 0.1em;
+		line-height: 1.5;
+		margin: 0 0 1em 0;
+		text-transform: uppercase;
+	}
+    
+        h1l a, h2l a, h3l a, h4l a, h5l a, h6l a {
+			color: inherit;
+			text-decoration: none;
+		}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 			color: inherit;
 			text-decoration: none;
 		}
 
-	h1 {
+	h1, h1l {
 		font-size: 2em;
 	}
 
-	h2 {
+	h2, h2l {
 		font-size: 1.25em;
 	}
 
-	h3 {
+	h3, h3l {
 		font-size: 1.1em;
 	}
 
-	h4 {
+	h4, h4l {
 		font-size: 1em;
 	}
 
-	h5 {
+	h5, h5l {
 		font-size: 0.9em;
 	}
 
-	h6 {
+	h6, h6l {
 		font-size: 0.7em;
 	}
 
 	@media screen and (max-width: 736px) {
 
-		h2 {
+		h2, h2l {
 			font-size: 1em;
 		}
 
-		h3 {
+		h3, h3l {
 			font-size: 0.9em;
 		}
 
-		h4 {
+		h4, h4l {
 			font-size: 0.8em;
 		}
 
-		h5 {
+		h5, h5l {
 			font-size: 0.7em;
 		}
 
-		h6 {
+		h6, h6l {
 			font-size: 0.7em;
 		}
 
