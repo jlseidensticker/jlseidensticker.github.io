@@ -37,7 +37,7 @@ if( not ospath.isdir(output_folder) ):
 
 
 #--- Get all files matching supportedFormats_img in input_folder ---
-imgz = [pp.resolve() for pp in paveway(input_folder).rglob("**/*") if pp.suffix in supportedFormats_img]; # Get a list of files that match the supported image formats
+imgz = [pp.resolve() for pp in paveway(input_folder).rglob("**/*") if pp.suffix.lower() in supportedFormats_img]; # Get a list of files that match the supported image formats
 
 
 #--- Convert megapixels to pixels ---
