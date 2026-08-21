@@ -54,11 +54,16 @@ for i in range(0, len(imgz)):
     # END IF
     path4img = ospath.join(output_folder, *imgz[i].parts[-2:]); # Get the path
     if( img2img_shape[0]*img2img_shape[1] > pixel_lim ):
-        path4img = ospath.splitext(path4img)[0]+'.webp'; # Replace jpg with webp for conversion
+        # path4img = ospath.splitext(path4img)[0]+'.webp'; # Replace jpg with webp for conversion [not wanted b/c want to mirror all original file names]
         scalar = (pixel_lim/(img2img_shape[0]*img2img_shape[1]))**(1/2); # Calculate the scalar to scale it by to get to pixel_lim
         img2img_reshape = (round(img2img_shape[0]*scalar), round(img2img_shape[1]*scalar)); # Calculate the shape of the image at that pixel_lim
-        # img2img.resize((img2img_reshape[0], img2img_reshape[1]), Image.Resampling.LANCZOS).save(path4img, optimize=True, progressive=True); # Resize and save [for jpg]
-        img2img.resize((img2img_reshape[0], img2img_reshape[1]), Image.Resampling.LANCZOS).save(path4img, quality=65); # Resize and save [for webp]
+        if( ospath.splitext(path4img)[1].lower() in ['.jpg', '.jpeg'] ):
+            img2img.resize((img2img_reshape[0], img2img_reshape[1]), Image.Resampling.LANCZOS).save(path4img, optimize=True, progressive=True); # Resize and save [for jpg]
+        elif( ospath.splitext(path4img)[1].lower() == '.webp' ):
+            img2img.resize((img2img_reshape[0], img2img_reshape[1]), Image.Resampling.LANCZOS).save(path4img, quality=65); # Resize and save [for webp]
+        else:
+            img2img.resize((img2img_reshape[0], img2img_reshape[1]), Image.Resampling.LANCZOS).save(path4img); # Catch-all
+        # END IF
     else:
         shutil.copy(imgz[i], path4img); # Just copy it over, it's already thumbnail sized
     # END IF
