@@ -2,14 +2,15 @@
 """
 Batch converts a folder (and sub-folders) of images into smaller thumbnails (like for a website) while preserving original folder structure
 """
-from PIL import Image, ImageFilter
+from PIL import Image, ImageOps
 import mimetypes
 from pathlib import Path as paveway #3.4
-from os import path as ospath, makedirs as osmakedirs, getcwd as osgetcwd, chdir as oschdir, listdir as oslistdir, curdir as oscurdir, rename as osrename
+from os import path as ospath, makedirs as osmakedirs, getcwd as osgetcwd
 import shutil
 
 #--- User Settings ---
-# base_folder = r'C:\Users\Ode to Haggis\Downloads\jlseidensticker.github.io\images'; # Folder which should have a `fulls` folder to convert to a `thumbs` folder
+base_folder = osgetcwd(); # Get the basename automatically (works if this file is next to the "fulls" folder)
+# base_folder = r'C:\jlseidensticker.github.io\images'; # Folder which should have a `fulls` folder to convert to a `thumbs` folder
 pixel_lim = 0.375; # MegaPixels, 1MP == 1000x1000 image (solid size for a thumbnail in a portfolio layout)
 
 
@@ -28,8 +29,10 @@ supportedFormats_img = supportedFormats_img.union(set(get_extensions_for_type('i
 
 
 #--- Do folder work ---
-base_folder = osgetcwd(); # Get the basename automatically (works if this file is next to the "fulls" folder)
 input_folder = ospath.join(base_folder, 'fulls'); # Input folder for images, will check subfolders
+if( not ospath.isdir(input_folder) ):
+    raise Exception('ERROR: `input_folder` does not exist and must for this code to run. Consider setting base_folder to a static path in the User Settings.\nFolder missing: `'+input_folder+'`.');
+# END IF
 output_folder = ospath.join(base_folder, 'thumbs'); # Output folder for images, will preserve subfolders
 if( not ospath.isdir(output_folder) ):
     osmakedirs(output_folder); # Make the folder if it does not exist
@@ -47,6 +50,9 @@ pixel_lim = pixel_lim*1E6; # For ease of use
 #--- Make thumbnails of the images ---
 for i in range(0, len(imgz)):
     img2img = Image.open(imgz[i]); # Get the image loaded in
+    if( img2img.info.get('exif') is not None ):
+        img2img = ImageOps.exif_transpose(img2img); # Rotate as exif data requests if it is there
+    # END IF
     img2img_shape = img2img.size; # Get the size of the image
     dir4img = ospath.join(output_folder, imgz[i].parts[-2]); # Get the subfolder
     if( not ospath.isdir(dir4img) ):
