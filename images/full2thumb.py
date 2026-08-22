@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Batch converts a folder (and sub-folders) of images into smaller thumbnails (like for a website) while preserving original folder structure
+This code is licensed under the AGPLv3 license.
 """
 from PIL import Image, ImageOps
 import mimetypes
